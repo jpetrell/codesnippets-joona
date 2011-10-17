@@ -20,10 +20,11 @@ ListModel {
     }
     Component.onCompleted: populate()
     function populate() {
+        // go from A to Z
         for (var index = 65; index < 91; index++) {
-            var alphabet = String.fromCharCode(index) // from A to Z
+            var alphabet = String.fromCharCode(index)
             var alphabetCount = Math.floor(Math.random()*5)
-            for (var index = 0;index < alphabetCount; index++)
+            for (var index2 = 0; index2 < alphabetCount; index2++)
                 append({"number": count, "item": alphabet, "artist": "artist " + (count+1)})
         }
         calculateAlphabets()

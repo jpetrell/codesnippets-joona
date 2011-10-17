@@ -2,17 +2,17 @@ import QtQuick 1.0
 
 Rectangle {
     color: "black"
-    width: 800; height: 300
+    width: 800; height: 400
     HorizontalPathView {
-        id: albumView
-        model: Model { id: albumModel }
+        id: horizontalPathView
+        model: Model { id: model }
         delegate: Delegate {}
         anchors.fill: parent
     }
     AlphabeticScrollbar {
-        alphabets: albumModel.alphabets
-        alphabetIndeces: albumModel.alphabetIndeces
-        view: albumView
+        view: horizontalPathView
+        alphabets: model.alphabets
+        alphabetIndeces: model.alphabetIndeces
         anchors {
             left: parent.left
             right: parent.right

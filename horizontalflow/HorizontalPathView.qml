@@ -1,11 +1,12 @@
-import Qt 4.7
+import QtQuick 1.0
 
 PathView {
     id: horizontalPathView
     focus: true
     highlight: Item {}
     pathItemCount: 11
-    preferredHighlightBegin: 0.5; preferredHighlightEnd: 0.5
+    preferredHighlightBegin: 0.5
+    preferredHighlightEnd: 0.5
     path: Path {
         startX: -400
         startY: horizontalPathView.height/2-50
