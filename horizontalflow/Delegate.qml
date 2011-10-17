@@ -7,10 +7,9 @@ Rectangle {
     z: PathView.view.zLevel(index)
     color: Qt.rgba(0.5+(PathView.view.count - number)*Math.random()/PathView.view.count,
                    0.3+number*Math.random()/PathView.view.count, 0.3*Math.random(), 1.0)
-    Keys.onEnterPressed: clicked()
     Keys.onReturnPressed: clicked()
-    onClicked: PathView.view.currentIndex = index
     signal clicked
+    onClicked: PathView.view.currentIndex = index
     Text {
         smooth: true
         color: "white"
