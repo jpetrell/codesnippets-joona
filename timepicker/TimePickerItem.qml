@@ -4,6 +4,7 @@ Rectangle {
     id: timePickerItem
     property int number
     property bool pressed: itemMouse.pressed || highlightTimer.running
+    property bool isCurrentItem: ListView.isCurrentItem
     color: index % 2 ? "white" : "lightgray"
     height: 60; width: parent.width
     Rectangle {

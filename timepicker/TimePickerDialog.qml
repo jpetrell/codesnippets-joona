@@ -15,16 +15,7 @@ Rectangle {
     signal canceled
     onFinished: timePicker.state = ""
     onCanceled: timePicker.state = ""
-    Component.onCompleted: setCurrentTime()
-    function setCurrentTime() {
-        var dateTime = new Date()
-        dateTime.setMinutes(dateTime.getMinutes()+5)
-        minutes = dateTime.getMinutes()
-        hours = dateTime.getHours()
-    }
     function show() {
-        hourList.positionViewAtIndex(hours, ListView.Center)
-        minuteList.positionViewAtIndex(minutes/5, ListView.Center)
         state = "visible"
     }
     function formatTime() {
@@ -32,22 +23,6 @@ Rectangle {
         time.setHours(hours)
         time.setMinutes(5*Math.round(minutes/5))
         return Qt.formatDateTime(time, "hh:mm")
-    }
-    Timer {
-        interval: 100; repeat: true
-        running: timePicker.state == "visible"
-        onTriggered: {
-            var minuteIndex = minuteList.indexAt(
-                    minuteList.contentX+minuteList.width/2,
-                    minuteList.contentY+minuteList.height/2)
-            var hourIndex = hourList.indexAt(
-                    hourList.contentX+hourList.width/2,
-                    hourList.contentY+hourList.height/2)
-            if (minuteIndex >= 0)
-                timePicker.minutes = minuteModel.get(minuteIndex).minutes
-            if (hourIndex >= 0)
-                timePicker.hours = hourModel.get(hourIndex).hours
-        }
     }
     Column {
         id: contentColumn
@@ -76,9 +51,17 @@ Rectangle {
                         Component.onCompleted: {
                             for (var index = 0; index < 24;  index++)
                                 append({"hours": index})
+                            hourList.currentIndex =
+                                Math.ceil(new Date().getHours())
                         }
                     }
-                    delegate: TimePickerItem { number: hours }
+                    delegate: TimePickerItem {
+                        number: hours
+                        onIsCurrentItemChanged: {
+                            if (isCurrentItem)
+                                timePicker.hours = hours
+                        }
+                    }
                     snapMode: ListView.SnapToItem
                     flickDeceleration: 1000
                     preferredHighlightBegin: 120; preferredHighlightEnd: 120
@@ -93,9 +76,17 @@ Rectangle {
                         Component.onCompleted: {
                             for (var index = 0; index < 12; index++)
                                 append({"minutes": 5*index})
+                            minuteList.currentIndex =
+                                Math.ceil(new Date().getMinutes()/5)
                         }
                     }
-                    delegate: TimePickerItem { number: minutes }
+                    delegate: TimePickerItem {
+                        number: minutes
+                        onIsCurrentItemChanged: {
+                            if (isCurrentItem)
+                                timePicker.minutes = minutes
+                        }
+                    }
                     snapMode: ListView.SnapToItem
                     flickDeceleration: 1000
                     preferredHighlightBegin: 120; preferredHighlightEnd: 120
@@ -132,19 +123,7 @@ Rectangle {
             Button {
                 text: qsTr("Ok")
                 width: parent.width/2 - 2
-                onClicked: {
-                    var minuteIndex = minuteList.indexAt(
-                            minuteList.contentX+minuteList.width/2,
-                            minuteList.contentY+minuteList.height/2)
-                    var hourIndex = hourList.indexAt(
-                            hourList.contentX+hourList.width/2,
-                            hourList.contentY+hourList.height/2)
-                    if (minuteIndex >= 0)
-                      timePicker.minutes = minuteModel.get(minuteIndex).minutes
-                    if (hourIndex >= 0)
-                      timePicker.hours = hourModel.get(hourIndex).hours
-                    timePicker.finished()
-                }
+                onClicked: timePicker.finished()
             }
             Rectangle {
                 width: 2; height: 70
