@@ -2,7 +2,7 @@ import QtQuick 1.0
 
 Rectangle {
     color: "black"
-    width: 800; height: 400
+    width: 800; height: 280
     HorizontalPathView {
         id: horizontalPathView
         model: Model { id: model }
@@ -17,8 +17,7 @@ Rectangle {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            leftMargin: 3
-            rightMargin: 3
+            margins: 3
         }
     }
 }

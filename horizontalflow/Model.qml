@@ -25,7 +25,7 @@ ListModel {
             var alphabet = String.fromCharCode(index)
             var alphabetCount = Math.floor(Math.random()*5)
             for (var index2 = 0; index2 < alphabetCount; index2++)
-                append({"number": count, "item": alphabet, "artist": "artist " + (count+1)})
+                append({"number": count, "item": alphabet})
         }
         calculateAlphabets()
     }
