@@ -14,7 +14,7 @@ Column {
     Repeater {
         id: repeater
         model: 40
-        ColoredRow {
+        ColorRow {
             width: parent.width
             height: Math.ceil(relativeHeight*pixelsPerRelativeHeight)
             property real relativeHeight: Math.pow(Math.random(),3)
