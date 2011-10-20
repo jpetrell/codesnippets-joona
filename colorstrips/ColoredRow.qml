@@ -3,7 +3,7 @@ import QtQuick 1.0
 Row {
     width: 800; height: 400
     property real pixelsPerRelativeWidth
-    function calculateColor() {
+    function rectangleColor() {
         var isRed = Math.random() < 0.2
         var grayness = 0.2+0.6*Math.random()
         var red = isRed ? grayness+0.6*Math.random()*(1-grayness) : grayness
@@ -24,7 +24,7 @@ Row {
         model: 50
         Rectangle {
             height: parent.height
-            color: calculateColor()
+            color: rectangleColor()
             width: Math.ceil(relativeWidth*pixelsPerRelativeWidth)
             property real relativeWidth: Math.pow(Math.random(),3)
         }
