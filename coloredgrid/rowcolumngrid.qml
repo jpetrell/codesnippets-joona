@@ -1,24 +1,30 @@
 import QtQuick 1.0
 
 Row {
-    property real weight
-    property real count: 50
     width: 800; height: 400
+    property real pixelPerRelativeWidth
     Component.onCompleted: {
-        var ratioCount = 0
+        var totalRelativeWidth = 0
         for (var index = 0; index < children.length; index++) {
             if (children[index] !== repeater)
-                ratioCount += children[index].ratio
+                totalRelativeWidth += children[index].relativeWidth
         }
-        weight = width/ratioCount
+        pixelPerRelativeWidth = width/totalRelativeWidth
     }
     Repeater {
         id: repeater
-        model: parent.count
+        model: 50
         ColoredColumn {
             height: parent.height
-            width: Math.ceil(ratio*parent.weight)
-            property real ratio: Math.pow(Math.random(),3)
+            width: Math.ceil(relativeWidth*pixelPerRelativeWidth)
+            property real relativeWidth: Math.pow(Math.random(),3)
+            function calculateColor() {
+                var value = Math.random()
+                var blue = value < 0.4 ? 0.8+0.2*Math.random() : 0.1+0.4*Math.random()
+                var red = value > 0.4 && value < 0.8 ? 0.7+0.3*Math.random() : 0.4+0.3*Math.random()
+                var green = value > 0.8 ? 0.2+0.2*Math.random() : 0.2*Math.random()
+                return Qt.rgba(red, green, blue)
+            }
         }
     }
 }
