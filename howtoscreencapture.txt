@@ -1,19 +1,26 @@
 
 How to do screen capture on Ubuntu
 
-sudo apt-get install recordmydesktop # for screen capture
-sudo apt-get install mencoder # for changing from ogv to avi
+1. Install screen capture software
+sudo apt-get install recordmydesktop
 
-Use xwindinfo to determine the window id of the application window you want to capture
+2. Open application you want to capture
+qmlscene myproject.qml
+
+3. Use xwindinfo to determine the window id of the application window you want to capture
 xwininfo # click on the window you want to record to determine the window id
 
-Start recording. If you want you can specify delay in seconds.
-recordmydesktop --delay=5 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000c
+4. Start recording. If you want you can specify delay in seconds.
+recordmydesktop --delay=3 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000
 
-You probably need to clip the recording a bit. You can use Pitivi for that.
+5. Clip the recording. You probably need to clip the recording a bit. You can use Pitivi for that.
 pitivi
 
-You may need to transform the finished clip to a format that is playable by others, or that Vimeo or Youtube accepts.
-Mencoder is good for transforming ogv files to divx.
-mencoder fallingcubes.ogv -ovc xvid -xvidencopts pass=1 -o fallingcubes.avi -nosound # convert to avi if needed
+6. Render the clipped video. In PiTiVi click Render project toolbar button. Modify Export settings to your liking:
+Video output: Custom 
+Width: 800 # change width to match the size of the window
+Height: 480 # change height to match the size of the window
+Framerate: 15fps # to match recordmydesktop capture parameters
+Container: Avi Muxer [avimux] # Vimeo doesn't support the default Ogg Vorbis encoder 
+Video Codec: FFmpeg MPEG-4 part 2 encoder [ffenc_mpeg4].
 
