@@ -11,7 +11,7 @@ qmlscene myproject.qml
 xwininfo # click on the window you want to record to determine the window id
 
 4. Start recording. If you want you can specify delay in seconds.
-recordmydesktop --delay=3 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000
+recordmydesktop --fps=60 --delay=3 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000
 
 5. Clip the recording. You probably need to clip the recording a bit. You can use Pitivi for that.
 pitivi
