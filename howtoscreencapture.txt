@@ -13,10 +13,16 @@ xwininfo # click on the window you want to record to determine the window id
 4. Start recording. If you want you can specify delay in seconds.
 recordmydesktop --fps=60 --delay=3 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000
 
-5. Clip the recording. You probably need to clip the recording a bit. You can use Pitivi for that.
-pitivi
+5. a.) Convert the Ogg Vorbis clip to divx
 
-6. Render the clipped video. In PiTiVi click Render project toolbar button. Modify Export settings to your liking:
+sudo apt-get install mencoder
+mencoder out.ogv -ovc  xvid -oac mp3lame -xvidencopts pass=1 -o out.avi
+
+or 
+
+5. b.) If you need to clip the recording use PiTiVi (executable pitivi).
+
+Render the clipped video. In PiTiVi click Render project toolbar button. Modify Export settings to your liking:
 Video output: Custom 
 Width: 800 # change width to match the size of the window
 Height: 480 # change height to match the size of the window
