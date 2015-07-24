@@ -10,7 +10,7 @@ Rectangle{
         Emitter {
             size: 15
             sizeVariation: 10
-            speed: PointDirection { xVariation: 8; yVariation: 8 }
+            velocity: PointDirection { xVariation: 8; yVariation: 8 }
             emitRate: 10000
             lifeSpan: 2000
             anchors.fill: parent
