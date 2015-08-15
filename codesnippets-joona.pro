@@ -1,6 +1,6 @@
 TEMPLATE = aux
 
-PROJECTS = colorstrips fallingcubes \
+PROJECTS = button colorstrips fallingcubes \
     horizontalflow livepixels \
     overlappingletters splash timepicker \
     views
