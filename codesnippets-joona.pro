@@ -1,7 +1,7 @@
 TEMPLATE = aux
 
 PROJECTS = button colorstrips fallingcubes \
-    horizontalflow livepixels \
+    horizontalflow livepixels navigation \
     overlappingletters splash timepicker \
     trees view views
 
