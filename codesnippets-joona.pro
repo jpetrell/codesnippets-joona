@@ -3,7 +3,7 @@ TEMPLATE = aux
 PROJECTS = button colorstrips fallingcubes \
     horizontalflow livepixels \
     overlappingletters splash timepicker \
-    view views
+    trees view views
 
 message($${PROJECTS})
 OTHER_FILES += *.qml *.js
