@@ -13,7 +13,7 @@ Rectangle {
 
     property color primaryColor: "#f8f1e0"
     property color pageColor: "#99dbcd"
-    property color backgroundColor: "#f4ecda"
+    property color backgroundColor: "#f2e6c9"
     property color titleColor: "#587280"
     property color contentColor: "#7295a6"
 

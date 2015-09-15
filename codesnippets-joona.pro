@@ -2,7 +2,7 @@ TEMPLATE = aux
 
 PROJECTS = button colorstrips fallingcubes \
     horizontalflow layouts livepixels navigation \
-    overlappingletters splash timepicker \
+    overlappingletters scalability splash timepicker \
     trees view views
 
 message($${PROJECTS})
