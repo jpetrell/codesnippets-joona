@@ -216,7 +216,7 @@ Rectangle {
 
         // Titles
         Repeater {
-            model: ["Vertical", "Horizontal", "Grid", "Inverted", "Looping", "Cloud"]
+            model: ["Vertical", "Horizontal", "Grid", "Inverted", "Looping", "No path"]
             Text {
                 width: 8*medium
                 color: titleColor
