@@ -1,9 +1,9 @@
 TEMPLATE = aux
 
-PROJECTS = button colorstrips fallingcubes \
-    horizontalflow layouts livepixels navigation \
-    overlappingletters scalability splash timepicker \
-    trees view views
+PROJECTS = button colorstrips fallingcubes horizontalflow \
+           layoutgrid layouts livepixels navigation \
+           overlappingletters scalability splash timepicker \
+           trees view views
 
 message($${PROJECTS})
 OTHER_FILES += *.qml *.js
