@@ -8,11 +8,13 @@ Rectangle {
     property real lineWidth: 2
     property real buttonWidth: 3/2*unit
     property real pageMargin: 2*unit
+    property bool wireframe
+    property alias layoutGridVisible: layoutGrid.visible
 
-    property color primaryColor: "#f8f1e0"
-    property color backgroundColor: "#99dbcd"
-    property color contentColor: "#7295a6"
-    property color highlightBackgroundColor: "#a791c9"
+    property color primaryColor: wireframe ? "white" : "#f8f1e0"
+    property color backgroundColor: wireframe ? "#575757" : "#99dbcd"
+    property color contentColor: wireframe ? "transparent" : "#7295a6"
+    property color highlightBackgroundColor: wireframe ? "transparent" : "#a791c9"
     property color layoutGridColor: "#ffffff"
 
     property int fontSizeSmall: 14
@@ -80,6 +82,7 @@ Rectangle {
                 id: image
                 height: 3*unit
                 width: 3*unit
+                opacity: wireframe ? 0.5 : 1.0
             }
             Paragraph {
                 id: paragraph
@@ -105,8 +108,7 @@ Rectangle {
                 // Album art
                 ContentItem {
                     id: album
-                    opacity: 0.2
-
+                    opacity: wireframe ? 1.0 : 0.2
                     color: primaryColor
 
                     height: audioControls.height + audioControls.y
@@ -191,7 +193,7 @@ Rectangle {
             x: pageMargin
             width: parent.width - 2*x
             height: shortcutRow.height + unit
-            color: Qt.rgba(primaryColor.r, primaryColor.g, primaryColor.b, 0.5)
+            color: wireframe ? "transparent" : Qt.rgba(primaryColor.r, primaryColor.g, primaryColor.b, 0.5)
 
             Row {
                 id: shortcutRow
@@ -223,7 +225,8 @@ Rectangle {
 
                 // Gallery photo
                 ContentItem {
-                    color: Qt.tint("white", Qt.rgba(contentColor.r, contentColor.g, contentColor.b, 0.3+0.7*modelData))
+                    opacity: wireframe ? 0.0 : 1.0
+                    color: Qt.tint(primaryColor, Qt.rgba(contentColor.r, contentColor.g, contentColor.b, 0.3+0.7*modelData))
                     anchors.verticalCenter: parent.verticalCenter
                     height: 5*unit
                     width: 5*unit
@@ -326,5 +329,7 @@ Rectangle {
             }
         }
     }
-    LayoutGrid {}
+    LayoutGrid {
+        id: layoutGrid
+    }
 }
