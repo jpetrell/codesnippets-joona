@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import "components"
 
-Rectangle {
+FocusScope {
 
     property real tiny:  Math.round(extraSmall*2/3)
     property real extraSmall: Math.round(small*2/3)
@@ -17,9 +17,25 @@ Rectangle {
     property color titleColor: "#587280"
     property color contentColor: "#7295a6"
 
+    Component.onCompleted: forceActiveFocus()
+
+    focus: true
     width: grid.width + large + medium
     height: grid.y + grid.height + medium
-    color: backgroundColor
+
+    Rectangle {
+        anchors.fill: parent
+        color: backgroundColor
+    }
+
+    Keys.onSpacePressed: jump()
+    Keys.onLeftPressed: jump()
+    Keys.onRightPressed: jump()
+
+    function jump() {
+        pathView.currentIndex = 3
+        focus = false
+    }
 
     Grid {
         id: grid
@@ -158,6 +174,8 @@ Rectangle {
                 pathItemCount: 9
                 model: 12
                 preferredHighlightBegin: 0.5; preferredHighlightEnd: 0.5
+                highlight: Item {}
+                highlightMoveDuration: 600
                 path: Path {
                     startY: -pathView.height/6; startX: pathView.width/2
                     PathAttribute { name: "iconScale"; value: 0.6 }
