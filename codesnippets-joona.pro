@@ -1,6 +1,6 @@
 TEMPLATE = aux
 
-PROJECTS = button colorstrips fallingcubes horizontalflow \
+PROJECTS = button colorstrips fallingcubes scripts horizontalflow \
            layoutgrid layouts livepixels navigation \
            overlappingletters scalability splash timepicker \
            trees view views
