@@ -3,19 +3,20 @@ import "components"
 
 Rectangle {
 
-    property real tiny: 2
-    property real extraSmall: 4
-    property real small: 6
-    property real medium: 12
-    property real large: 24
-    property real huge: 30
+    property int unit: 3
+    property int tiny: unit
+    property int extraSmall: 2*tiny
+    property int small: 3*tiny
+    property int medium: 2*small
+    property int large: 2*medium
+    property int huge: 6*small
 
-    property real fontSizeSmall: 12
-    property real fontSizeMedium: 18
-    property real fontSizeLarge: 24
+    property int fontSizeSmall: 6*unit
+    property int fontSizeMedium: 9*unit
+    property int fontSizeLarge: 12*unit
 
-    property real lineWidth: 3
-    property real buttonWidth: 8
+    property int lineWidth: unit*1.5
+    property real buttonWidth: 4*unit
 
     property color primaryColor: "#fdf5e0"
     property color pageColor: "#6fbfa8"

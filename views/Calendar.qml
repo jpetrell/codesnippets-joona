@@ -13,7 +13,7 @@ Page {
             property int count: 25
             columns: 5
             width: parent.width
-            columnSpacing: 13
+            columnSpacing: medium
             rowSpacing: small
 
             Repeater {

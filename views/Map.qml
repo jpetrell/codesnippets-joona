@@ -3,13 +3,14 @@ import "components"
 
 Page {
 
+    property real ratio: unit/2
     Repeater {
         // land areas
         model: [
-            [[55, 35], [70, 30], [65, 45], [57, 45]],
-            [[0, 0], [0, 38], [22, 29], [32, 40], [45, 32], [35, 15], [47, 0]],
-            [[56, 0], [85, 0], [95, 9], [85, 26], [70, 14], [60, 19], [56, 0]],
-            [[0, 70], [30, 65], [38, 82], [55, 90], [42, 110], [60, parent.height], [0, parent.height]],
+            [[55*ratio, 35*ratio], [70*ratio, 30*ratio], [65*ratio, 45*ratio], [57*ratio, 45]*ratio],
+            [[0, 0], [0, 38*ratio], [22*ratio, 29*ratio], [32*ratio, 40*ratio], [45*ratio, 32*ratio], [35*ratio, 15*ratio], [47*ratio, 0]],
+            [[56*ratio, 0], [85*ratio, 0*ratio], [95*ratio, 9], [85*ratio, 26*ratio], [70*ratio, 14*ratio], [60*ratio, 19*ratio], [56*ratio, 0]],
+            [[0, 70*ratio], [30*ratio, 65*ratio], [38*ratio, 82*ratio], [55*ratio, 90*ratio], [42*ratio, 110*ratio], [60*ratio, parent.height], [0, parent.height]],
             [[parent.width, parent.height], [parent.width*2/3, parent.height], [parent.width*2/3-medium, parent.height-large], [parent.width*2/3 -medium, parent.height*3/4], [parent.width*3/4, parent.height*1/2], [parent.width*4/5, parent.height/3], [parent.width, parent.height/3 - medium]
             ]
         ]

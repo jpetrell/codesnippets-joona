@@ -25,7 +25,7 @@ Item {
                 height: label.height + unit
                 color: node.color
                 border {
-                    width: 1
+                    width: Math.ceil(unit/10)
                     color: colorIndicator.color === box.color ? Qt.rgba(primaryColor.r, primaryColor.g, primaryColor.b, 0.5) : "transparent"
                 }
                 visible: color != transparentColor
@@ -44,7 +44,7 @@ Item {
                     margins: unit
                 }
 
-                font.pixelSize: 12
+                font.pixelSize: unit*2.8
                 elide: Text.ElideRight
             }
         }
@@ -63,8 +63,8 @@ Item {
             property real originY: box.y + (2+model.index)*box.height/(3+node.childrenCount)
             property real targetY: targetItem.y + targetItem.height/2
 
-            x: node.width
-            width: row.spacing
+            x: node.width -1
+            width: row.spacing+1
             height: parent.height
 
             contextPoint: [-lineWidth, originY]

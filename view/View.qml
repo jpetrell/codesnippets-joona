@@ -4,7 +4,7 @@ import "components"
 // View component, background overlay as the root item
 Rectangle {
 
-    property real unit: 10
+    property real unit: 20
     property color backgroundColor: "#A8C7D9"
     property color primaryColor: "#F4EEE5"
     property color panelColor: "#203864"
