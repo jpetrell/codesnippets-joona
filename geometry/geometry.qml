@@ -12,8 +12,8 @@ Rectangle {
         return 2*unit*Math.round(0.5*value/unit)
     }
 
-    width: content.width + 3*huge
-    height: content.height + 3*huge
+    width: 2560
+    height: 1386
     gradient: Gradient {
         GradientStop {
             position: 0.0
@@ -27,12 +27,11 @@ Rectangle {
 
     Item {
         id: content
-        width: 10*large
-        height: 10*large
-        anchors.centerIn: parent
+        width: parent.width
+        height: parent.height
 
         Repeater {
-            model: 9
+            model: 500
             property var existing: []
             function overlap(a, b) {
                 var m = unit*2
@@ -71,7 +70,7 @@ Rectangle {
 
             Polygon {
                 sides: 3+Math.floor(Math.random()*4)
-                width: round(Math.round(4+5*Math.random())*medium)
+                width: round(Math.round(4+4*Math.random())*small)
                 height: width
             }
         }

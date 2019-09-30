@@ -12,8 +12,8 @@ Rectangle {
         return 2*unit*Math.round(0.5*value/unit)
     }
 
-    width: content.width + 2*huge
-    height: content.height + 2*huge
+    width: 2560
+    height: 1386
     gradient: Gradient {
         GradientStop {
             position: 0.0
@@ -27,12 +27,11 @@ Rectangle {
 
     Item {
         id: content
-        width: 9*large
-        height: 9*large
-        anchors.centerIn: parent
+        width: parent.width
+        height: parent.height
 
         Repeater {
-            model: 12
+            model: 500
             property var existing: []
             function overlap(a, b) {
                 var m = unit*4
@@ -72,7 +71,7 @@ Rectangle {
             Firework {
                 x: Math.random()*parent.width - width/2
                 y: Math.random()*parent.height - height/2
-                width: round(Math.round(3+5*Math.random())*medium)
+                width: round(Math.round(3+5*Math.random())*4*unit)
                 height: round(width*(0.7+0.6*Math.random()))
             }
         }
