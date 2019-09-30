@@ -28,33 +28,35 @@ Rectangle {
             unit: 2*root.unit
             anchors.verticalCenter: parent.verticalCenter
         }
-        Node {
+
+        ItemNode {
             text: "Background"
             color: backgroundColor
             width: 22*unit
-            Node {
+            ItemNode {
                 text: "Background"
                 color: primaryColor
                 width: 22*unit
-                Node {
+                ItemNode {
                     text: "View logo"
                     color: highlightColor
                     width: 25*unit
                 }
-                Node {
+                ItemNode {
                     text: "Search button"
                     color: backgroundColor
                     width: 25*unit
                 }
             }
-            Node {
+
+            ItemNode {
                 text: "Scroll area"
                 width: 22*unit
-                Node {
+                ItemNode {
                     text: "List layout"
                     Repeater {
                         model: 4
-                        Node {
+                        ItemNode {
                             property bool more: model.index === 2
                             text: more ? "..." : "List item"
                             color: more ? "transparent" : contentColor
@@ -63,15 +65,16 @@ Rectangle {
                     }
                 }
             }
-            Node {
+
+            ItemNode {
                 text: "Background"
                 width: 22*unit
                 color: panelColor
-                Node {
+                ItemNode {
                     text: "List layout"
                     Repeater {
                         model: 4
-                        Node {
+                        ItemNode {
                             text: "Button"
                             color: buttonColor
                             width: 18*unit

@@ -3,6 +3,10 @@ import QtQuick 2.0
 Item {
     property QtObject node
     property alias layout: layoutItem
+    default property alias content: loader.sourceComponent
+    property alias contentItem: loader.item
+
+    objectName: "nodeItem"
     width: row.width
     height: row.height
 
@@ -10,44 +14,11 @@ Item {
         id: row
         spacing: node.spacing
 
-        Rectangle {
-            id: box
-            color: panelColor
-            height: colorIndicator.height + 2*unit
-            width: node.width
-            radius: 3
+        Loader {
+            id: loader
             anchors.verticalCenter: parent.verticalCenter
-
-            Rectangle {
-                id: colorIndicator
-                x: unit
-                width: visible ? height : 0
-                height: label.height + unit
-                color: node.color
-                border {
-                    width: Math.ceil(unit/10)
-                    color: colorIndicator.color === box.color ? Qt.rgba(primaryColor.r, primaryColor.g, primaryColor.b, 0.5) : "transparent"
-                }
-                visible: color != transparentColor
-                anchors.verticalCenter: parent.verticalCenter
-                property color transparentColor: "transparent"
-            }
-
-            Text {
-                id: label
-                text: node.text
-                color: primaryColor
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                    left: colorIndicator.right
-                    right: parent.right
-                    margins: unit
-                }
-
-                font.pixelSize: unit*2.8
-                elide: Text.ElideRight
-            }
         }
+
         Column {
             id: layoutItem
             anchors.verticalCenter: parent.verticalCenter
@@ -60,11 +31,11 @@ Item {
 
         BezierLine {
             property Item targetItem: layoutItem.children[model.index]
-            property real originY: box.y + (2+model.index)*box.height/(3+node.childrenCount)
+            property real originY: loader.y + (2+model.index)*loader.height/(3+node.childrenCount)
             property real targetY: targetItem.y + targetItem.height/2
-
-            x: node.width -1
-            width: row.spacing+1
+z: -1
+            x: node.width - unit
+            width: row.spacing + unit
             height: parent.height
 
             contextPoint: [-lineWidth, originY]

@@ -10,14 +10,22 @@ Item {
     property real spacing: 6*unit
     property int depth
     property int maxDepth
-    property string text
-    property color color: "transparent"
     property int childrenCount
+    property Component content
+    property Item item
 
     Component.onCompleted: if (root) create(parent)
 
     function create(parentItem) {
-        var item = component.createObject(parentItem, {"node": node})
+        item = content.createObject(parentItem, {"node": node})
+
+        if (item.objectName !== "nodeItem") {
+            console.log("Error: Trying to create nodeItem of wrong type")
+            return
+        }
+
+        console.log(content, "item", item, item.layout)
+
         if (!root) {
             depth = parent.depth + 1
         }
@@ -34,10 +42,5 @@ Item {
             parent.maxDepth = Math.max(parent.maxDepth, maxDepth, depth)
         }
         return item
-    }
-
-    Component {
-        id: component
-        NodeItem {}
     }
 }
