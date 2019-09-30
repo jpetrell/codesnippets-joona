@@ -1,4 +1,3 @@
-
 How to do screen capture on Ubuntu
 
 1. Install screen capture software
@@ -11,7 +10,7 @@ qmlscene myproject.qml
 xwininfo # click on the window you want to record to determine the window id
 
 4. Start recording. If you want you can specify delay in seconds.
-recordmydesktop --fps=60 --delay=3 --no-frame --stop-shortcut=Control+s --windowid=windowidhere # e.g. --windowid=0x440000
+recordmydesktop --fps=60 --delay=3 --no-frame --stop-shortcut=Control+s --no-sound --windowid=windowidhere # e.g. --windowid=0x300000d
 
 5. a.) Convert the Ogg Vorbis clip to divx
 
