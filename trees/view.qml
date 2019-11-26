@@ -14,8 +14,8 @@ Rectangle {
     property color buttonColor: "#E7DD73"
     property color contentColor: Qt.tint("white", Qt.rgba(highlightColor.r, highlightColor.g, highlightColor.b, 0.5))
 
-    width: Math.max(800, row.width+unit*6)
-    height: Math.max(420, row.height+unit*4)
+    width: row.width+unit*6
+    height: row.height+unit*4
     color: "#E3EDF3"
 
     Row {
